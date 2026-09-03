@@ -130,8 +130,9 @@ directory explicitly:
 
 ## Release Status
 
-Version 0.2.0 is a source-only release licensed under the MIT License; see
-`LICENSE`. It may be placed in an unpublished repository draft for metadata and
-file validation. Public release still requires confirmation that the numerical
-results align with the submitted manuscript and that public creator metadata is
-compatible with the journal's review policy.
+Version 0.2.0 is a public, source-only release licensed under the MIT License;
+see `LICENSE`. The analysis CSV, generated results, fitted models, and row-level
+outputs are not distributed. A complete numerical rerun therefore requires
+lawful local access to the checksum-matched input described in `data/README.md`.
+Public availability of the source does not convert the repository into a public
+deposit of the underlying reference dataset.
