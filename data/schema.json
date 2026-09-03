@@ -1,0 +1,27 @@
+{
+  "dataset_file": "SwedishSustainableConcrete.csv",
+  "dataset_included": false,
+  "expected_sha256": "d6db56a6ca7c5fd1722844004c3eac0490ad5155286af06a5ac64bbec7382bd6",
+  "grain": "one mixture composition observed at one curing age",
+  "columns": [
+    {"name": "cement", "type": "number", "unit": "kg/m3", "role": "input"},
+    {"name": "blast_furnace_slag", "type": "number", "unit": "kg/m3", "role": "input"},
+    {"name": "fly_ash", "type": "number", "unit": "kg/m3", "role": "input"},
+    {"name": "water", "type": "number", "unit": "kg/m3", "role": "input"},
+    {"name": "superplasticizer", "type": "number", "unit": "kg/m3", "role": "input"},
+    {"name": "coarse_aggregate", "type": "number", "unit": "kg/m3", "role": "input"},
+    {"name": "fine_aggregate", "type": "number", "unit": "kg/m3", "role": "input"},
+    {"name": "age", "type": "integer", "unit": "day", "role": "input"},
+    {"name": "concrete_compressive_strength", "type": "number", "unit": "MPa", "role": "measured_output"},
+    {"name": "Embodied_CO2 (kg)", "type": "number", "unit": "kg CO2e/m3", "role": "derived_output"},
+    {"name": "Energy_Use (MJ)", "type": "number", "unit": "MJ/m3", "role": "derived_output"},
+    {"name": "Total_Material_Use (kg)", "type": "number", "unit": "kg/m3", "role": "derived_output"}
+  ],
+  "derived_in_code": [
+    "mix_id",
+    "binder",
+    "water_binder_ratio",
+    "scm_replacement_ratio",
+    "absolute_volume"
+  ]
+}

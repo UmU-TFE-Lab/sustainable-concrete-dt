@@ -1,0 +1,210 @@
+{
+  "analysis_columns": [
+    "cement",
+    "blast_furnace_slag",
+    "fly_ash",
+    "water",
+    "superplasticizer",
+    "coarse_aggregate",
+    "fine_aggregate",
+    "age",
+    "concrete_compressive_strength",
+    "Embodied_CO2 (kg)",
+    "Energy_Use (MJ)",
+    "Total_Material_Use (kg)"
+  ],
+  "feature_columns": [
+    "cement",
+    "blast_furnace_slag",
+    "fly_ash",
+    "water",
+    "superplasticizer",
+    "coarse_aggregate",
+    "fine_aggregate",
+    "age"
+  ],
+  "target_columns": [
+    "concrete_compressive_strength",
+    "Embodied_CO2 (kg)",
+    "Energy_Use (MJ)",
+    "Total_Material_Use (kg)"
+  ],
+  "correlation": {
+    "methods": ["pearson", "spearman", "kendall"]
+  },
+  "clustering": {
+    "k_values": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "selected_k": 3,
+    "n_init": 20
+  },
+  "pca": {
+    "n_components": 12,
+    "export_row_scores": false
+  },
+  "predictive": {
+    "models": ["random_forest", "xgboost", "dnn"],
+    "require_all_models": true,
+    "test_fraction": 0.2,
+    "track_energy": true,
+    "country_iso_code": "SWE",
+    "model_parameters": {
+      "random_forest": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "max_features": 1.0,
+        "n_jobs": 1
+      },
+      "xgboost": {
+        "n_estimators": 100,
+        "max_depth": 6,
+        "learning_rate": 0.1,
+        "subsample": 1.0,
+        "colsample_bytree": 1.0,
+        "reg_alpha": 0.0,
+        "reg_lambda": 1.0,
+        "n_jobs": 1
+      },
+      "dnn": {
+        "hidden_layer_sizes": [64, 64],
+        "learning_rate": 0.001,
+        "beta_1": 0.9,
+        "beta_2": 0.999,
+        "epsilon": 1e-8,
+        "batch_size": 16,
+        "epochs": 1000,
+        "early_stopping": false
+      }
+    }
+  },
+  "sobol": {
+    "surrogate_model": "random_forest",
+    "base_sample_count": 1024,
+    "bounds_source": "observed_min_max",
+    "numerical_zero_tolerance": 1e-8
+  },
+  "legacy_data_domain_optimization": {
+    "enabled": false,
+    "surrogate_model": "xgboost",
+    "population_size": 400,
+    "generations": 1200,
+    "reference_partitions": 6,
+    "crossover_probability": 0.9,
+    "crossover_eta": 15.0,
+    "mutation_probability": 0.2,
+    "mutation_scale": 0.2,
+    "center_distance_scales": null
+  },
+  "bayesian_network": {
+    "smoothing": 1.0,
+    "parent_map": {
+      "concrete_compressive_strength": [
+        "cement",
+        "blast_furnace_slag",
+        "fly_ash",
+        "water",
+        "superplasticizer",
+        "coarse_aggregate",
+        "fine_aggregate",
+        "age"
+      ],
+      "Embodied_CO2 (kg)": [
+        "cement",
+        "blast_furnace_slag",
+        "fly_ash",
+        "water",
+        "superplasticizer",
+        "coarse_aggregate",
+        "fine_aggregate"
+      ],
+      "Energy_Use (MJ)": [
+        "cement",
+        "blast_furnace_slag",
+        "fly_ash",
+        "water",
+        "superplasticizer",
+        "coarse_aggregate",
+        "fine_aggregate"
+      ],
+      "Total_Material_Use (kg)": [
+        "cement",
+        "blast_furnace_slag",
+        "fly_ash",
+        "water",
+        "superplasticizer",
+        "coarse_aggregate",
+        "fine_aggregate"
+      ]
+    },
+    "queries": [
+      {
+        "id": "strength_marginal",
+        "variable": "concrete_compressive_strength",
+        "evidence": {}
+      },
+      {
+        "id": "strength_given_cement_high_water_medium",
+        "variable": "concrete_compressive_strength",
+        "evidence": {"cement": "high", "water": "medium"}
+      },
+      {
+        "id": "gwp_given_cement_high",
+        "variable": "Embodied_CO2 (kg)",
+        "evidence": {"cement": "high"}
+      },
+      {
+        "id": "energy_given_superplasticizer_high",
+        "variable": "Energy_Use (MJ)",
+        "evidence": {"superplasticizer": "high"}
+      }
+    ]
+  },
+  "path_model": {
+    "equations": {
+      "concrete_compressive_strength": ["cement", "water", "age"],
+      "Embodied_CO2 (kg)": ["fly_ash"],
+      "Energy_Use (MJ)": ["superplasticizer"],
+      "Total_Material_Use (kg)": ["coarse_aggregate", "fine_aggregate"]
+    },
+    "covariance_pairs": [
+      ["cement", "water"],
+      ["age", "fly_ash"]
+    ]
+  },
+  "dml": {
+    "fit_partition": "predictive_training",
+    "folds": 2,
+    "group_column": null,
+    "nuisance_model": {
+      "n_estimators": 100,
+      "max_depth": null,
+      "min_samples_leaf": 1,
+      "max_features": 1.0,
+      "n_jobs": 1
+    }
+  },
+  "interventions": {
+    "test_fraction": 0.2,
+    "clip_to_observed_bounds": false,
+    "subgroup_features": ["water_binder_ratio"],
+    "reported_scenarios": [
+      {"id": "water_-10%", "changes": {"water": -0.1}},
+      {"id": "fly_ash_+10%", "changes": {"fly_ash": 0.1}},
+      {"id": "age_+20%", "changes": {"age": 0.2}},
+      {"id": "cement_+10%", "changes": {"cement": 0.1}},
+      {"id": "cement_+20%", "changes": {"cement": 0.2}},
+      {"id": "superplasticizer_-10%", "changes": {"superplasticizer": -0.1}},
+      {"id": "superplasticizer_-20%", "changes": {"superplasticizer": -0.2}},
+      {
+        "id": "water_-10%__fly_ash_+10%",
+        "changes": {"water": -0.1, "fly_ash": 0.1}
+      },
+      {
+        "id": "cement_+10%__superplasticizer_-10%",
+        "changes": {"cement": 0.1, "superplasticizer": -0.1}
+      }
+    ],
+    "sensitivity_variables": ["cement", "water", "fly_ash", "age"],
+    "sensitivity_changes": [-0.3, -0.2, -0.1, 0.1, 0.2, 0.3]
+  }
+}

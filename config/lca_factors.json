@@ -1,0 +1,52 @@
+{
+  "functional_unit": "1 m3 of concrete screened against the stated age-specific strength requirement",
+  "system_boundary": "Constituent production screening boundary; transport and service life excluded",
+  "uncertainty_model": "Independent triangular factor envelopes sampled once per run and shared across candidates",
+  "evidence_status": "Dataset-reproduction baseline plus bounded methodological screening; regional EPD substitution remains required for project decisions",
+  "materials": {
+    "cement": {
+      "gwp_kgco2e_per_kg": {"baseline": 0.85, "low": 0.68, "mode": 0.85, "high": 1.02},
+      "energy_mj_per_kg": {"baseline": 4.6, "low": 4.0, "mode": 4.6, "high": 5.5},
+      "source": "Dataset-embedded coefficient with declared bounded screening envelope",
+      "geography": "Generic", "reference_year": "Not specified", "allocation": "As embedded in supplied indicator"
+    },
+    "blast_furnace_slag": {
+      "gwp_kgco2e_per_kg": {"baseline": 0.02, "low": 0.012, "mode": 0.02, "high": 0.05},
+      "energy_mj_per_kg": {"baseline": 0.6, "low": 0.5, "mode": 0.6, "high": 1.2},
+      "source": "Dataset-embedded coefficient and manuscript screening range",
+      "geography": "Generic", "reference_year": "Not specified", "allocation": "Scenario-dependent co-product allocation"
+    },
+    "fly_ash": {
+      "gwp_kgco2e_per_kg": {"baseline": 0.008, "low": 0.004, "mode": 0.008, "high": 0.03},
+      "energy_mj_per_kg": {"baseline": 0.3, "low": 0.2, "mode": 0.3, "high": 0.8},
+      "source": "Dataset-embedded coefficient and manuscript screening range",
+      "geography": "Generic", "reference_year": "Not specified", "allocation": "Scenario-dependent co-product allocation"
+    },
+    "water": {
+      "gwp_kgco2e_per_kg": {"baseline": 0.0, "low": 0.0, "mode": 0.0001, "high": 0.001},
+      "energy_mj_per_kg": {"baseline": 0.0, "low": 0.0, "mode": 0.001, "high": 0.01},
+      "source": "Dataset-embedded zero with bounded non-zero sensitivity scenario",
+      "geography": "Generic", "reference_year": "Not specified", "allocation": "Not applicable"
+    },
+    "superplasticizer": {
+      "gwp_kgco2e_per_kg": {"baseline": 2.0, "low": 0.592, "mode": 2.0, "high": 2.6},
+      "energy_mj_per_kg": {"baseline": 8.0, "low": 3.90, "mode": 8.0, "high": 12.0},
+      "source": "Dataset baseline; lower scenario informed by Mapei Dynamon NRG-600 EPD (A1-A3, 0.592 kg CO2e/kg and approximately 3.90 MJ/kg primary energy)",
+      "source_url": "https://www.epd-norge.no/getfile.php/1321083-1661864292/EPDer/Utenlandsk%20registrerte%20EPD/NEPD-3169-1811_DYNAMON-NRG-600.pdf",
+      "geography": "Dataset generic; lower scenario Norway/Europe", "reference_year": "2020 EPD data", "allocation": "EPD allocation for lower scenario"
+    },
+    "coarse_aggregate": {
+      "gwp_kgco2e_per_kg": {"baseline": 0.005, "low": 0.003, "mode": 0.005, "high": 0.02},
+      "energy_mj_per_kg": {"baseline": 0.2, "low": 0.05, "mode": 0.2, "high": 0.3},
+      "source": "Dataset-embedded coefficient and manuscript screening range",
+      "geography": "Generic", "reference_year": "Not specified", "allocation": "Not specified"
+    },
+    "fine_aggregate": {
+      "gwp_kgco2e_per_kg": {"baseline": 0.005, "low": 0.003, "mode": 0.005, "high": 0.02},
+      "energy_mj_per_kg": {"baseline": 0.2, "low": 0.05, "mode": 0.2, "high": 0.3},
+      "source": "Dataset-embedded coefficient and manuscript screening range",
+      "geography": "Generic", "reference_year": "Not specified", "allocation": "Not specified"
+    }
+  }
+}
+

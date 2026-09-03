@@ -1,0 +1,49 @@
+{
+  "material_order": [
+    "cement",
+    "blast_furnace_slag",
+    "fly_ash",
+    "water",
+    "superplasticizer",
+    "coarse_aggregate",
+    "fine_aggregate"
+  ],
+  "material_bounds_kg_m3": {
+    "cement": [102.0, 540.0],
+    "blast_furnace_slag": [0.0, 359.4],
+    "fly_ash": [0.0, 200.1],
+    "water": [121.8, 247.0],
+    "superplasticizer": [0.0, 32.2],
+    "coarse_aggregate": [801.0, 1145.0],
+    "fine_aggregate": [594.0, 992.6]
+  },
+  "density_kg_m3": {
+    "cement": 3150.0,
+    "blast_furnace_slag": 2900.0,
+    "fly_ash": 2300.0,
+    "water": 1000.0,
+    "superplasticizer": 1080.0,
+    "coarse_aggregate": 2700.0,
+    "fine_aggregate": 2650.0
+  },
+  "screening_rules": {
+    "water_binder_ratio": [0.30, 0.55],
+    "binder_kg_m3": [280.0, 550.0],
+    "scm_replacement_ratio": [0.0, 0.65],
+    "air_volume_m3_m3": 0.02,
+    "absolute_volume_tolerance_m3_m3": 0.025,
+    "strength_lower_bound_coverage": 0.95,
+    "applicability_rule": "standardized five-nearest-neighbor mean distance at the configured empirical quantile"
+  },
+  "rule_provenance": {
+    "conceptual_source": "ACI PRC-211.1-22 absolute-volume and proportioning concepts",
+    "numerical_status": "Declared study screening assumptions, not universal code limits",
+    "unobserved_properties": "Slump and durability are not measured and are not certified by these rules"
+  },
+  "scenarios": [
+    {"id": "target40_age28", "age_days": 28, "required_strength_mpa": 40.0},
+    {"id": "target40_age56", "age_days": 56, "required_strength_mpa": 40.0},
+    {"id": "target40_age90", "age_days": 90, "required_strength_mpa": 40.0}
+  ]
+}
+

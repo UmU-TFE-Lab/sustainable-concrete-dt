@@ -1,0 +1,30 @@
+{
+  "data_path": "data/SwedishSustainableConcrete.csv",
+  "engineering_config": "config/engineering_scenarios.json",
+  "lca_config": "config/lca_factors.json",
+  "output_dir": "results",
+  "seeds": [17, 29, 43, 71, 101],
+  "model": {
+    "n_estimators": 200,
+    "max_depth": null,
+    "min_samples_leaf": 2,
+    "max_features": 0.8,
+    "n_jobs": 1
+  },
+  "cross_validation": {
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "alpha": 0.05,
+    "early_ages": [3, 7],
+    "target_ages": [28, 56, 90]
+  },
+  "optimization": {
+    "population_size": 120,
+    "generations": 120,
+    "reference_partitions": 7,
+    "monte_carlo_samples": 5000,
+    "risk_lambda": 1.0,
+    "k_neighbors": 5,
+    "applicability_quantile": 0.95
+  }
+}
