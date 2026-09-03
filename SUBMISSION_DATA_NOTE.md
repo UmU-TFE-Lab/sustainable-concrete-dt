@@ -16,11 +16,13 @@ outputs, fitted `.joblib` models, generated numerical results, and local
 environment metadata. It contains source code, configuration files, tests,
 method documentation, the expected data schema, and checksum information only.
 
-Before public archiving, either:
+The source-only repository is publicly available at:
 
-1. add the dataset after confirming redistribution permission; or
-2. add authoritative acquisition instructions while retaining the checksum.
+`https://github.com/UmU-TFE-Lab/sustainable-concrete-dt`
 
-The final public repository DOI or URL should be inserted into the manuscript
-and submission system only after the redistribution status and release contents
-have been confirmed.
+This link should be described in submission metadata as a public code and
+configuration resource, not as a public deposit of the analysis CSV. A complete
+numerical rerun additionally requires lawful local access to the checksum-matched
+input. If redistribution permission is later confirmed, the dataset may be added
+through a separately versioned archival release; otherwise an authoritative
+acquisition link should be supplied while retaining the checksum.
